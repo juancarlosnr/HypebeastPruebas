@@ -16,6 +16,35 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@id/btn_remove_Fav"
+                    android:layout_width="99dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:backgroundTint="@color/white"
+                    android:gravity="center"
+                    android:text="Eliminar favorito"
+                    android:textColor="#18B61E"
+                    android:textSize="11sp"
+                    android:visibility="invisible"
+                    android:enabled="false"/>
+
+                <Button
+                    android:id="@+id/btn"
+                    android:layout_width="33dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/ic_baseline_favorite_border_24"
+                    android:backgroundTint="#18B61E"
+                    android:gravity="center" />
+            </LinearLayout>
+
             <ImageView
                 android:id="@+id/cardview_imgview"
                 android:layout_width="160dp"
@@ -34,11 +63,7 @@
                 android:textStyle="bold"
                 tools:text="NIKE AIR JORDAN 1 SUPREME" />
 
-            <Button
-                android:id="@+id/btn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"/>
+
 
         </LinearLayout>
 

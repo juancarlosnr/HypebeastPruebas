@@ -25,9 +25,12 @@ import com.example.hypebeast.ui.sneakers.adapter.SneakersAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
-class SneakersFragment : Fragment(R.layout.fragment_sneakers), SneakersAdapter.OnSneakerClickListener,SneakersAdapter.OnFavouritesClickListener {
+class SneakersFragment : Fragment(R.layout.fragment_sneakers), SneakersAdapter.OnSneakerClickListener,SneakersAdapter.OnFavouritesClickListener, SneakersAdapter.OnRemoveFavouritesClickListener {
 
     private lateinit var binding: FragmentSneakersBinding
     private var gridLayoutManager: GridLayoutManager? = null
@@ -49,7 +52,7 @@ class SneakersFragment : Fragment(R.layout.fragment_sneakers), SneakersAdapter.O
                     binding.progressBar.visibility = View.GONE
                     binding.rvSneakers.layoutManager = gridLayoutManager
                     binding.rvSneakers.setHasFixedSize(true)
-                    binding.rvSneakers.adapter = SneakersAdapter(result.data, this@SneakersFragment, this@SneakersFragment)
+                    binding.rvSneakers.adapter = SneakersAdapter(result.data, this@SneakersFragment, this@SneakersFragment, this@SneakersFragment)
                 }
                 is Result.Failure ->{
                     binding.progressBar.visibility = View.GONE
@@ -70,11 +73,25 @@ class SneakersFragment : Fragment(R.layout.fragment_sneakers), SneakersAdapter.O
         )
             findNavController().navigate(action)
     }
-    override fun onFavouritesCliclLister(sneakers: sneakers) {
+    override fun onFavouritesClickListener(sneakers: sneakers) {
+
+        CoroutineScope(Dispatchers.IO).launch {
         val uid = FirebaseAuth.getInstance().uid
         val db = FirebaseFirestore.getInstance().document("")
         db.collection("users").document("$uid").update("favorites_id", FieldValue.arrayUnion(sneakers.sneakers_id))
+        }
+        //Para eliminar se hace lo mismo que arriba lo unico que hay que indicarle es FildValue.arrayRemove
+        //hacer metodo para que cuente clicks y una vez los haya contado y hagamos doble ckick hacer que elimine ese favorito.
 
+    }
 
+    override fun OnRemoveFavouritesClick(sneakers: sneakers) {
+
+        /*CoroutineScope(Dispatchers.IO).launch {
+           val uid = FirebaseAuth.getInstance().uid
+            val db = FirebaseFirestore.getInstance()
+            val favouritesid:String = ""
+           db.collection("users").document("$uid").delete(favouritesid)
+        }*/
     }
 }

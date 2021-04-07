@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hypebeast.R
+import com.example.hypebeast.data.model.profile.Favourites
 import com.example.hypebeast.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.example.hypebeast.data.remote.profile.FavouritesDataSource
@@ -19,8 +20,12 @@ import com.example.hypebeast.domain.profile.FavouritesRepoImpl
 import com.example.hypebeast.presentation.profile.FavouritesModelFactory
 import com.example.hypebeast.presentation.profile.FavouritesViewModel
 import com.example.hypebeast.ui.profile.adapter.FavouritesAdapter
+import com.google.firebase.firestore.FieldValue
 
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -67,6 +72,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     fun getUserName() {
+
+        CoroutineScope(Dispatchers.IO).launch {
+
         val uid = FirebaseAuth.getInstance().uid
         val querySnapshot = FirebaseFirestore.getInstance().collection("users").document("$uid")
         querySnapshot.addSnapshotListener { snapshot, e ->
@@ -79,8 +87,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             } else {
                 Log.d("Fallo", "Current data:null")
             }
-        }
+            }
+         }
     }
+
+
 
 
 }

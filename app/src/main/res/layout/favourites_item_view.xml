@@ -33,6 +33,21 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             tools:text="NIKE AIR JORDAN 1 SUPREME" />
+            <View
+         android:layout_width="150dp"
+            android:layout_height="1dp"
+                android:background="#FFF"/>
+        <TextView
+            android:id="@+id/cardview_removefavourite"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:background="@drawable/gradient_main"
+            android:fontFamily="@font/mulish_main"
+            android:gravity="center"
+            android:shadowColor="#F6F6F6"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            tools:text="Eliminar favorito" />
     </LinearLayout>
 
 
