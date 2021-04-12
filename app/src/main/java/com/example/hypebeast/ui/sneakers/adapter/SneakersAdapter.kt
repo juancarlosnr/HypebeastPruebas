@@ -51,8 +51,6 @@ class SneakersAdapter(private val sneakerslist: List<sneakers>, private val item
             removeBottomClickListener.OnRemoveFavouritesClick(sneakerslist[position])
             itemBinding.btnRemoveFav.visibility = View.INVISIBLE
             itemBinding.btnRemoveFav.isEnabled = false
-
-
         }
 
         return holder

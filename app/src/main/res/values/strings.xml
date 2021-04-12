@@ -2,4 +2,8 @@
     <string name="app_name">HypeBeast</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dialog_one_style_positive_btn">Sí</string>
+    <string name="dialog_one_style_negative_btn">No</string>
+    <string name="dialog_one_style_message">¿Estas seguro que quieres cerrar sesión?</string>
+    <string name="dialog_one_style_title">Cerrar sesión</string>
 </resources>

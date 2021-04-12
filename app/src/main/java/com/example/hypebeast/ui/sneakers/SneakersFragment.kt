@@ -87,11 +87,11 @@ class SneakersFragment : Fragment(R.layout.fragment_sneakers), SneakersAdapter.O
 
     override fun OnRemoveFavouritesClick(sneakers: sneakers) {
 
-        /*CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch {
            val uid = FirebaseAuth.getInstance().uid
             val db = FirebaseFirestore.getInstance()
-            val favouritesid:String = ""
-           db.collection("users").document("$uid").delete(favouritesid)
-        }*/
+           db.collection("users").document("$uid")
+            db.collection("users").document("$uid").update("favorites_id", FieldValue.arrayRemove(sneakers.sneakers_id))
+        }
     }
 }

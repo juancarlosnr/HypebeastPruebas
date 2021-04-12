@@ -17,32 +17,27 @@ class FavouritesDataSource {
         var favouritesList = mutableListOf<Favourites>()
         val fireStore = FirebaseFirestore.getInstance()
         val ref = fireStore.collection("users").document("$uid")
-        val sneakers = fireStore.collection("sneakers").whereEqualTo("sneakers_id", true)
-        Log.d("idsneakers", "$sneakers")
-        val sneakers2 = FirebaseFirestore.getInstance().collection("sneakers").get().await()
-
+        var documentos:ArrayList<String>
+        val sneakers = fireStore.collection("sneakers")
         sneakers.get().addOnSuccessListener { ids ->
-            for( sneaker in ids){
-                Log.d("Hola", "${sneaker.data}")
+            for (d in 0 until ids.documents.size) {
+                Log.d("idsSneaker1: ", ids.documents[d].id)
             }
         }
-            .addOnFailureListener { exception ->
-                Log.d("Fallo", exception.toString())
-            }
 
         ref.get().addOnSuccessListener { document ->
-            val documentos: ArrayList<String> = document.get("favorites_id") as ArrayList<String>
+            documentos = document.get("favorites_id") as ArrayList<String>
+            Log.d("documentos", "$documentos")
             for (d in documentos) {
                 Log.d("prueba2", "$d")
-                if (d == sneakers) {
-                    for (favourite in sneakers2.documents) {
-                        favourite.toObject(Favourites::class.java)?.let { favoritos ->
-                            favouritesList.add(favoritos)
-                            Log.d("prueba", "$favouritesList")
-                        }
-                    }
-                }
 
+            }
+        }
+        //Esto es para hacer pruebas
+        val querySnapshot = FirebaseFirestore.getInstance().collection("sneakers").get().await()
+        for (sneaker in querySnapshot.documents){
+            sneaker.toObject(Favourites::class.java)?.let { Favourites ->
+                favouritesList.add(Favourites)
             }
         }
         return Result.Sucess(favouritesList)
