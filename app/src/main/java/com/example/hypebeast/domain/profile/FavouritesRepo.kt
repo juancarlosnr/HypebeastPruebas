@@ -5,4 +5,5 @@ import com.example.hypebeast.core.Result
 
 interface FavouritesRepo {
     suspend fun getFavourites():Result<List<Favourites>>
+
 }

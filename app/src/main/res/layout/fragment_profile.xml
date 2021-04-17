@@ -20,6 +20,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="96dp"
@@ -31,20 +32,38 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fbtakephoto"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#18B61E"
+        android:foreground="@drawable/ic_baseline_file_upload_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.641"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.29" />
+        app:layout_constraintVertical_bias="0.281" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="16dp"
+
+        android:backgroundTint="#18B61E"
+        android:foreground="@drawable/ic_baseline_settings_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
-        android:layout_width="191dp"
-        android:layout_height="176dp"
+        android:layout_width="182dp"
+        android:layout_height="165dp"
         android:layout_marginTop="64dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
         android:src="@drawable/ic_launcher_background"
         app:civ_border_color="#18B61E"
         app:civ_border_width="4dp"
@@ -98,21 +117,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="@color/white"
-        android:backgroundTintMode="src_in"
-        android:src="@drawable/settings"
-        android:tint="#B61D1D"
-        app:backgroundTint="#18B61E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"

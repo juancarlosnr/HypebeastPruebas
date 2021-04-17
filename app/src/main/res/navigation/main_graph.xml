@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.hypebeast.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailsNewsFragment"
+            app:destination="@id/detailsNewsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.hypebeast.ui.profile.ProfileFragment"
@@ -17,7 +21,11 @@
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -87,6 +95,9 @@
         <argument
             android:name="sneakers_resellprice"
             app:argType="string" />
+        <argument
+            android:name="sneakers_wherebuy"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
@@ -114,5 +125,26 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsNewsFragment"
+        android:name="com.example.hypebeast.ui.details.DetailsNewsFragment"
+        android:label="fragment_details_news"
+        tools:layout="@layout/fragment_details_news" >
+        <argument
+            android:name="news_picture"
+            app:argType="string" />
+        <argument
+            android:name="news_title"
+            app:argType="string" />
+        <argument
+            android:name="news_description"
+            app:argType="string" />
+        <argument
+            android:name="news_date"
+            app:argType="string" />
+        <argument
+            android:name="news_autor"
+            app:argType="string" />
     </fragment>
 </navigation>

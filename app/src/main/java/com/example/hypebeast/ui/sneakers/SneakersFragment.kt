@@ -69,7 +69,8 @@ class SneakersFragment : Fragment(R.layout.fragment_sneakers), SneakersAdapter.O
             sneakers.sneakers_releasedate,
             sneakers.sneakers_description,
             sneakers.sneakers_releaseprice,
-            sneakers.sneakers_resellprice
+            sneakers.sneakers_resellprice,
+            sneakers.sneakers_wherebuy
         )
             findNavController().navigate(action)
     }

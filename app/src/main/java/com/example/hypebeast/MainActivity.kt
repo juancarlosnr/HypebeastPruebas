@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.splashFragment -> hideBottomNav()
                 R.id.settingsFragment -> hideBottomNav()
                 R.id.detailsFragment -> hideBottomNav()
+                R.id.detailsNewsFragment -> hideBottomNav()
                 R.id.homeFragment -> showBottomNav()
                 R.id.sneakersFragment -> showBottomNav()
                 R.id.profileFragment -> showBottomNav()

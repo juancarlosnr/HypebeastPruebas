@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
 
-    <ImageView
-        android:id="@+id/img_news"
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_news"
+            android:layout_width="393dp"
+            android:layout_height="422dp"
+            android:scaleType="centerCrop"
+            tools:background="@mipmap/ic_launcher" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#18B61E"
+            android:layout_marginBottom="10dp"
+            />
+    <TextView
+        android:id="@+id/txt_notices"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
-        android:scaleType="centerCrop"
-        tools:background="@mipmap/ic_launcher" />
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="4dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/mulish_main"
+        android:text="LLEGAN LAS NIKE AIR JORDAN X SUPREME"
+        android:gravity="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:textSize="23sp"
+        android:textColor="#18B61E"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#18B61E"
+            android:layout_marginBottom="10dp"
+            />
+
+
+
+
 </LinearLayout>
+</androidx.cardview.widget.CardView>

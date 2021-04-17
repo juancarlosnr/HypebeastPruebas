@@ -1,5 +1,6 @@
 package com.example.hypebeast.ui.sneakers.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -28,6 +31,7 @@ class SneakersAdapter(private val sneakerslist: List<sneakers>, private val item
     }
 
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         val itemBinding = SneakersItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val holder = SneakersFragmentViewHolder(itemBinding, parent.context)

@@ -27,6 +27,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         binding.tvDescription.text = args.sneakersDescription
         binding.tvReleaseprice.text = args.sneakersReleaseprice
         binding.tvResellprice.text = args.sneakersResellprice
+        binding.tvWherebuy.text = args.sneakersWherebuy
 
     }
 }

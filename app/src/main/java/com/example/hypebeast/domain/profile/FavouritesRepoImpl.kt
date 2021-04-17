@@ -6,4 +6,6 @@ import com.example.hypebeast.data.remote.profile.FavouritesDataSource
 
 class FavouritesRepoImpl(private val dataSource: FavouritesDataSource): FavouritesRepo {
     override suspend fun getFavourites(): Result<List<Favourites>> = dataSource.getFavouritesId()
+
+
 }
