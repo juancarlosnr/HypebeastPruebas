@@ -35,20 +35,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.29" />
 
-    <TextView
-        android:id="@+id/tv_terminos"
-        android:layout_width="381dp"
-        android:layout_height="33dp"
-        android:layout_marginBottom="13dp"
-        android:fontFamily="@font/mulish_main"
-        android:text="Términos del servicio"
-        android:textAlignment="viewStart"
-        android:textColor="#FFF"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@+id/view4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="parent" />
+
 
 
     <View
@@ -96,7 +83,7 @@
         android:layout_height="33dp"
         android:layout_marginBottom="11dp"
         android:fontFamily="@font/mulish_main"
-        android:text="Proximamente..."
+        android:text="Términos del servicio"
         android:textAlignment="viewStart"
         android:textColor="#FFF"
         android:textSize="22sp"
@@ -174,6 +161,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="14dp"
@@ -221,6 +209,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.909"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/mulish_main"
+        android:text="Activar Notificaciones"
+        android:textAlignment="viewStart"
+        android:textColor="#FFF"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

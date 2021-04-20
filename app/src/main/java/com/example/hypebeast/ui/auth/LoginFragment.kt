@@ -37,7 +37,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun isUserLoggedIn(){
         firebaseAuth.currentUser?.let {
-            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_loginFragment_to_viewPagerHome)
         }
     }
 
@@ -77,7 +77,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 }
                 is Result.Sucess -> {
                     binding.progressBar.visibility = View.GONE
-                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    findNavController().navigate(R.id.action_loginFragment_to_viewPagerHome)
                     Toast.makeText(requireContext(), "Welcome ${result.data?.email}", Toast.LENGTH_SHORT).show()
                 }
                 is Result.Failure -> {

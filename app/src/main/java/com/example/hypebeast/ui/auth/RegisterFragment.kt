@@ -60,7 +60,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 }
                 is Result.Sucess -> {
                     binding.progressBar.visibility = View.GONE
-                    findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
+                    findNavController().navigate(R.id.action_registerFragment_to_viewPagerHome)
 
                 }
                 is Result.Failure -> {

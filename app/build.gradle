@@ -4,6 +4,7 @@ plugins {
     id 'com.google.gms.google-services'
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.firebase.crashlytics'
+    id 'kotlin-kapt'
 
 }
 
@@ -59,7 +60,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:19.2.2'
     implementation 'com.google.firebase:firebase-crashlytics:17.4.1'
     implementation 'com.google.firebase:firebase-analytics:18.0.2'
-
+    implementation 'com.google.firebase:firebase-messaging:21.1.0'
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
@@ -87,6 +88,7 @@ dependencies {
     //Image Picker
     implementation 'com.github.dhaval2404:imagepicker:1.8'
     implementation 'com.github.florent37:inline-activity-result-kotlin:1.0.4'
+
 
 
 }

@@ -3,71 +3,58 @@ package com.example.hypebeast.data.remote.profile
 import android.util.Log
 import com.example.hypebeast.data.model.profile.Favourites
 import com.example.hypebeast.core.Result
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.*
-import kotlin.collections.ArrayList
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.tasks.await as await
 
 class FavouritesDataSource {
 
     suspend fun getFavouritesId(): Result<List<Favourites>> {
+        val db = FirebaseFirestore.getInstance()
         val uid = FirebaseAuth.getInstance().uid
-        val favouritesList = mutableListOf<Favourites>()
-        val fireStore = FirebaseFirestore.getInstance()
-        val ref = fireStore.collection("users").document("$uid")
-        var documentos: ArrayList<String> = arrayListOf()
-        val pruebaDocuments: ArrayList<String> = arrayListOf()
         val zapas: ArrayList<String> = arrayListOf()
+        var todaszapas: DocumentSnapshot
         val favoritos: ArrayList<String> = arrayListOf()
-        val sneakers = fireStore.collection("sneakers")
-        sneakers.get().addOnSuccessListener { ids ->
-            for (d in 0 until ids.documents.size) {
-                Log.d("idsSneaker1: ", ids.documents[d].id)
-                zapas.add(ids.documents[d].id)
-            }
-        }
+        var documentos: ArrayList<String> = arrayListOf()
+        val pruebadocumentos: ArrayList<String> = arrayListOf()
+        val favouritesList = mutableListOf<Favourites>()
+        val arraysfavoritos: ArrayList<String> = arrayListOf()
 
-        ref.get().addOnSuccessListener { document ->
+
+
+        val sneakers = db.collection("sneakers")
+        val usuario = db.collection("users").document("$uid")
+        val task1: Task<QuerySnapshot> = sneakers.get()
+        val task2: Task<DocumentSnapshot> = usuario.get()
+
+        Tasks.whenAllSuccess<Object>(task1, task2).addOnSuccessListener {
+            val ids: QuerySnapshot = task1.getResult()!!
+            val document: DocumentSnapshot = task2.getResult()!!
+            Log.d("ids", ids.documents.size.toString())
+            for(d in 0 until ids.documents.size){
+                zapas.add(ids.documents[d].id)
+                //Log.d("todaszapas2", "${ids.documents[d]}")
+                todaszapas = ids.documents[d]
+
+            }
+
+            val documents = document.get("favorites_id")
+            Log.d("pruebass", "$documents")
             documentos = document.get("favorites_id") as ArrayList<String>
-            Log.d("documentos", "$documentos")
-            for (d in documentos) {
-                Log.d("prueba2", "$d")
-                pruebaDocuments.add(d)
-            }
-        }
-        Log.d("documents", "$documentos")
-        for (d in 0 until zapas.size) {
-            Log.d("ZAPAAAS", "${zapas[d]}")
-            if (zapas.isEmpty()) {
-                println("VACIO ZAPAS")
-            }
-        }
-        for (d in 0 until pruebaDocuments.size) {
-            Log.d("DOCUMENTS:", "${pruebaDocuments[d]}")
-            if (pruebaDocuments.isEmpty()) {
-                println("VACIO DOCUMENTS")
-            }
-        }
-        for (d in zapas.indices) {
-            println(d)
-            for (a in pruebaDocuments.indices) {
-                println(a)
-                if (zapas[d] == pruebaDocuments[a]) {
-                    favoritos.add(zapas[d])
+            Log.d("favoritos", "$documentos")
+            for (a in 0 until zapas.size){
+                if (zapas[a] in documentos){
+                    Log.d("sifavorito", zapas[a] + "si es favorito")
+                    arraysfavoritos.add(zapas[a])
+
+                    Log.d("arrayfavourties", "$arraysfavoritos")
                 }
             }
-        }
-        for (d in favoritos.indices) {
-            Log.d("favoritos", "${favoritos[d]}")
-        }
-        //Esto es una prueba
-        val querySnapshot = FirebaseFirestore.getInstance().collection("sneakers").get().await()
-        for (sneaker in querySnapshot.documents) {
-            sneaker.toObject(Favourites::class.java)?.let { Favourites ->
-                favouritesList.add(Favourites)
-            }
+            Log.d("pruebaarray", "$arraysfavoritos")
         }
 
         return Result.Sucess(favouritesList)

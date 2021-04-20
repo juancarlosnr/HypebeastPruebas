@@ -36,13 +36,18 @@ import com.example.hypebeast.presentation.profile.FavouritesViewModel
 import com.example.hypebeast.ui.profile.adapter.FavouritesAdapter
 import com.example.hypebeast.ui.sneakers.SneakersFragmentDirections
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.tasks.Tasks
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.net.URL

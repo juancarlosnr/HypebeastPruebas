@@ -6,55 +6,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.hypebeast.R
+import com.example.hypebeast.databinding.FragmentViewPagerHomeBinding
+import com.example.hypebeast.ui.home.adapter.ViewPagerHomeAdapter
+import com.example.hypebeast.ui.onBoarding.ViewPagerAdapter
+import com.google.android.material.tabs.TabLayoutMediator
+import androidx.fragment.app.FragmentManager as FragmentManager1
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ViewPagerHome.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ViewPagerHome : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class ViewPagerHome : Fragment(R.layout.fragment_view_pager_home) {
+    private lateinit var binding:FragmentViewPagerHomeBinding
+    private lateinit var viewPagerHomeAdapter:ViewPagerHomeAdapter
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentViewPagerHomeBinding.bind(view)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+        viewPagerHomeAdapter = ViewPagerHomeAdapter(this)
+        binding.viewPagerNews.adapter = viewPagerHomeAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_pager_home, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ViewPagerHome.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ViewPagerHome().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        TabLayoutMediator(binding.tabLayout, binding.viewPagerNews){tab, position ->
+            when(position){
+                0->{
+                    tab.text="Novedades"
+                }
+                1->{
+                    tab.text="Looks"
+                }
+                2->{
+                    tab.text ="Proximamente"
                 }
             }
+        }.attach()
     }
 }

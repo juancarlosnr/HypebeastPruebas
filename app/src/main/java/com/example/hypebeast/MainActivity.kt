@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val navController = findNavController(R.id.fragments)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.sneakersFragment, R.id.profileFragment))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.viewPagerHome, R.id.sneakersFragment, R.id.profileFragment))
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when(destination.id){
@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.detailsFragment -> hideBottomNav()
                 R.id.detailsNewsFragment -> hideBottomNav()
                 R.id.homeFragment -> showBottomNav()
+                R.id.viewPagerHome -> showBottomNav()
                 R.id.sneakersFragment -> showBottomNav()
                 R.id.profileFragment -> showBottomNav()
             }
